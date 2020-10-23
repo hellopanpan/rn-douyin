@@ -28,7 +28,7 @@ import {
   StatusBar,
 } from 'react-native';
 import Video from 'react-native-video';
-
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const {width, height, scale} = Dimensions.get('window');
 const DATA = [
@@ -143,6 +143,7 @@ const App: () => React$Node = () => {
           paused={!(index === current)}
           repeat={true}      
         />
+        <Ionicons name={'ios-play'} size={24} color={'#fff'}/>
       </TouchableOpacity>
     );
   };
