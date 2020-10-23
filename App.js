@@ -12,6 +12,7 @@ import {
   Dimensions,
   SafeAreaView,
   TouchableOpacity,
+  TouchableWithoutFeedback,
   PanResponder,
   TextInput,
   StyleSheet,
@@ -49,6 +50,7 @@ const DATA = [
 const App: () => React$Node = () => {
   const [text, setText] = useState('')
   const [selectedId, setSelectedId] = useState(null);
+  const [play, setPlay] = useState(true);
   const [current, setCurrent] = useState(0);
   const currentRef = useRef(0);
   const videoPlayRef = useRef([]);
@@ -66,8 +68,8 @@ const App: () => React$Node = () => {
   const panResponder = useRef(
     PanResponder.create({
       // 要求成为响应者：
-      onStartShouldSetPanResponder: (evt, gestureState) => true,
-      onStartShouldSetPanResponderCapture: (evt, gestureState) => true,
+      // onStartShouldSetPanResponder: (evt, gestureState) => true,
+      // onStartShouldSetPanResponderCapture: (evt, gestureState) => true,
       onMoveShouldSetPanResponder: (evt, gestureState) => true,
       onMoveShouldSetPanResponderCapture: (evt, gestureState) => true,
 
@@ -95,24 +97,28 @@ const App: () => React$Node = () => {
         console.log('speed || ' + speed)
         if ((y > 100 || speed > 0.5) && currentRef.current > 0) {
           // 上一夜
-          goIndex(currentRef.current - 1)
+          goIndex(currentRef.current - 1, true)
         } else if ((y < -100 || speed < -0.5)&& currentRef.current < 2) {
           // 下一页
-          goIndex(currentRef.current + 1)
+          goIndex(currentRef.current + 1, true)
         } else {
           //停留本页
-          goIndex(currentRef.current)
+          goIndex(currentRef.current, false)
         }
       }
     })
   ).current;
   // 跳转index
-  const goIndex = (index) => {
+  const goIndex = (index, flag) => {
     console.log('index' + index)
     flatRef.current.scrollToIndex({index, animated: true})
     currentRef.current = index
     setCurrent(index)
-    videoPlayRef.current[index].current.seek(0)
+    // 翻视频
+    if (flag) {
+      videoPlayRef.current[index].current.seek(0)
+      setPlay(true)
+    }
   }
   
   
@@ -121,6 +127,11 @@ const App: () => React$Node = () => {
   const handelonScroll = (e) => {
     // 滚动偏移量
     console.log('scoll' + e.nativeEvent.contentOffset.y)
+  }
+  // 改变播放状态
+  changePlay = () => {
+    console.log('---play---')
+    setPlay(!play)
   }
 
   const videoError = () => {
@@ -134,17 +145,23 @@ const App: () => React$Node = () => {
     const backgroundColor = item.id === selectedId ? "#6e3b6e" : "#f9c2ff";
     videoPlayRef.current[index] = React.createRef()
     return (
-      <TouchableOpacity    style={[styles.item, {backgroundColor}]}>
-        <Text style={styles.title}>{index} | {item.title} {selectedId}</Text>
-        <Video 
-          ref={videoPlayRef.current[index]}
-          source={videoRef[index].uri} 
-          style={styles.backgroundVideo}
-          paused={!(index === current)}
-          repeat={true}      
-        />
-        <Ionicons name={'ios-play'} size={24} color={'#fff'}/>
-      </TouchableOpacity>
+      <TouchableWithoutFeedback  onPress={changePlay}  >
+        <View style={[styles.item, {backgroundColor}]}>
+          <Text style={styles.title}>{index} | {item.title} {selectedId}</Text>
+          <Video 
+            ref={videoPlayRef.current[index]}
+            source={videoRef[index].uri} 
+            style={styles.backgroundVideo}
+            paused={!((index === current) && play)}
+            repeat={true}      
+          />
+          {
+            !play?
+              <Ionicons name={'ios-play'} size={34} color={'#fff'} style={styles.iconPlay}/>
+            : null
+          }
+        </View>
+      </TouchableWithoutFeedback>
     );
   };
 
@@ -201,7 +218,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
   },
-  
+  iconPlay: {
+    position: 'absolute',
+    top: height/2,
+    left: width/2 - 6
+  }
 });
 
 export default App;
