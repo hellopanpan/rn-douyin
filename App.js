@@ -12,15 +12,19 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
+import store from './src/store';
 import Home from './src/view/home/index.js'
 
 const {width, height, scale} = Dimensions.get('window');
+import { Provider } from 'react-redux'
 
 const App: () => React$Node = () => {
   return (
-    <View style={styles.scrollView} >
-      <Home></Home>
-    </View>
+    <Provider store={store}>
+      <View style={styles.scrollView} >
+        <Home></Home>
+      </View>
+    </Provider>
   );
 };
 

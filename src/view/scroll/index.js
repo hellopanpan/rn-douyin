@@ -28,44 +28,20 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
+import { connect } from 'react-redux'
+import { actionsCreators } from '../../store/play'
 import Video from 'react-native-video';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import GoodInfo from './goodInfo';
-
+import {DATA} from '../../api/config'
 
 const {width, height, scale} = Dimensions.get('window');
-const DATA = [
-  {
-    id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-    title: "First Item",
-    good: '12.1w',
-    comment: '452'
-  },{
-    id: "bd7acbea-c1b1-46c2d53abb28ba",
-    title: "First Item",
-    good: '12.3w',
-    comment: '452'
-  },{
-    id: "bd7acbea-c1b1--3ad53abb28ba",
-    title: "First Item",
-    good: '12.2w',
-    comment: '452'
-  },
-  {
-    id: "3ac68afc-c605-48d3-a4ffbd91aa97f63",
-    title: "Second Item",
-    good: '11.1w',
-    comment: '452'
-  },
-  {
-    id: "58694a0f-3da1-471f-bd96-145571e29d72",
-    title: "Third Item",
-    good: '2.1w',
-    comment: '452'
-  },
-];
 
-const Scroll = () => {
+const Scroll = (props) => {
+  
+  const {good, list} = props
+  const {changeData, setList} = props
+  console.log(list)
   const [text, setText] = useState('')
   const [selectedId, setSelectedId] = useState(null);
   const [play, setPlay] = useState(true);
@@ -74,9 +50,9 @@ const Scroll = () => {
 
   const currentRef = useRef(0);
   const videoPlayRef = useRef([]);
-
   const flatRef = useRef();
   const startTimestampRef = useRef();
+
   const videoRef =[{
     uri: require('../../static/0.mp4')
   }, {
@@ -163,6 +139,8 @@ const Scroll = () => {
     })
     currentRef.current = index
     setCurrent(index)
+    console.log('-----set---')
+    changeData()
     // 翻视频
     if (flag) {
       videoPlayRef.current[index].current.seek(0)
@@ -170,8 +148,9 @@ const Scroll = () => {
     }
   }
   
-  
-
+  useEffect(() => {
+    setList(DATA)
+  }, [])
   // 滚动
   const handelonScroll = (e) => {
     // 滚动偏移量
@@ -208,9 +187,9 @@ const Scroll = () => {
     const backgroundColor = item.id === selectedId ? "#6e3b6e" : "#f9c2ff";
     videoPlayRef.current[index] = React.createRef()
     return (
-      <TouchableWithoutFeedback   onPress={changePlay} >
+      <TouchableWithoutFeedback   onPress={changePlay} key={item.id}>
         <View style={[styles.item, {backgroundColor}]}>
-          <Text style={styles.title}>{index} | {item.title} {selectedId}</Text>
+        <Text style={styles.title}>{index} | {item.id} - {selectedId} _ {good}</Text>
           <View  style={styles.backgroundVideo}>
             <Video 
               ref={videoPlayRef.current[index]}
@@ -233,21 +212,26 @@ const Scroll = () => {
   };
   return (
     <View style={styles.contain}>
-      <FlatList
-        {...panResponder.panHandlers}
-        style={styles.container}
-        onMomentumScrollEnd={handelonScroll}
-        ref={flatRef}
-        data={DATA}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-        extraData={selectedId}
-        scrollEnabled={false}
-        refreshControl={
-          <RefreshControl refreshing={refreshing} tintColor={'#fff'} titleColor={'#fff'}  title="正在刷新" onRefresh={() => onRefresh()} />
-        }
-        ListFooterComponent={renderFooter}
-      />
+      {
+        list.length ? (
+          <FlatList
+            {...panResponder.panHandlers}
+            style={styles.container}
+            onMomentumScrollEnd={handelonScroll}
+            ref={flatRef}
+            data={list}
+            renderItem={renderItem}
+            keyExtractor={item => item.id}
+            extraData={selectedId}
+            scrollEnabled={false}
+            refreshControl={
+              <RefreshControl refreshing={refreshing} tintColor={'#fff'} titleColor={'#fff'}  title="正在刷新" onRefresh={() => onRefresh()} />
+            }
+            ListFooterComponent={renderFooter}
+          />
+        ) : null
+      }
+      
       
     </View>
     
@@ -285,7 +269,7 @@ const styles = StyleSheet.create({
     fontSize: 32,
     position: 'absolute',
     top: 12,
-    left: width/2 - 6,
+    left: width/2 - 136,
     zIndex: 5000
   },
   iconPlay: {
@@ -303,4 +287,24 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Scroll;
+// 更新数据
+const mapState = state => ({
+  good: state.getIn(['play', 'good']),
+  list: state.getIn(['play', 'list'])
+})
+
+const mapDispatch = dispatch => ({
+  changeData() {
+    console.log('-----set')
+    let action = actionsCreators.setInfo();
+    dispatch(action)
+  },
+  setList(value) {
+    console.log('-----set---list')
+    console.log('-----set---list---21' + value)
+    let action = actionsCreators.setList(value);
+    dispatch(action)
+  },
+  
+})
+export default connect(mapState, mapDispatch)(Scroll);
