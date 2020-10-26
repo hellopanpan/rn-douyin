@@ -40,7 +40,7 @@ const {width, height, scale} = Dimensions.get('window');
 const Scroll = (props) => {
   
   const {good, list} = props
-  const {changeData, setList} = props
+  const {changeData, setList, praiseVideo} = props
   console.log(list)
   const [text, setText] = useState('')
   const [selectedId, setSelectedId] = useState(null);
@@ -200,10 +200,10 @@ const Scroll = (props) => {
               repeat={true}      
             />
           </View>
-          {<GoodInfo itemInfo={item}></GoodInfo>}
+          {<GoodInfo itemInfo={item} praiseVideo={praiseVideo}></GoodInfo>}
           {
             !play?
-              <Ionicons name={'ios-play'} size={34} color={'#fff'} style={styles.iconPlay}/>
+              <Ionicons name={'ios-play'} size={54} color={'#fff'} style={styles.iconPlay}/>
             : null
           }
         </View>
@@ -274,8 +274,8 @@ const styles = StyleSheet.create({
   },
   iconPlay: {
     position: 'absolute',
-    top: height/2,
-    left: width/2 - 6
+    top: height/2 -50,
+    left: width/2 - 16
   },
   loadingText: {
     width: width,
@@ -303,6 +303,10 @@ const mapDispatch = dispatch => ({
     console.log('-----set---list')
     console.log('-----set---list---21' + value)
     let action = actionsCreators.setList(value);
+    dispatch(action)
+  },
+  praiseVideo(value) {
+    let action = actionsCreators.praiseVideo(value);
     dispatch(action)
   },
   

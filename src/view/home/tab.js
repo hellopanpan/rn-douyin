@@ -8,6 +8,8 @@ import {
 } from 'react-native';
 import Scroll from '../scroll/index.js'
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { connect } from 'react-redux';
+import { actionsCreators } from '../../store/tab'
 const {width, height, scale} = Dimensions.get('window');
 
 let tabData = [{
@@ -28,19 +30,25 @@ let tabData = [{
 }]
   
 
-const TabList = () => {
+const TabList = (props) => {
+  const {tab, setTab} = props
   const [activeIndex, setActiveIndex] = useState(0)
+
+  const SetTabWrap = (index) => {
+    setActiveIndex(index)
+    setTab(index)
+  }
   return (
     <View style={styles.cont}>
         {
           tabData.map((item, index) =>  {
             return(
               item.id !== 'add' ? (
-                <TouchableOpacity key={index} style={[index === activeIndex ? styles.activeT: null, styles.item]} onPress={() => {setActiveIndex(index)}}>
-                  <Text style={[styles.text01, styles.active]}> {item.name} </Text>
+                <TouchableOpacity key={index} style={[index === activeIndex ? styles.activeT: null, styles.item]} onPress={() => {SetTabWrap(index)}}>
+                  <Text style={[styles.text01, styles.active]}> {item.name}</Text>
                 </TouchableOpacity>
               ): (
-                <TouchableOpacity  key={index} style={[index === activeIndex ? styles.activeT: null, styles.center]} onPress={() => {setActiveIndex(index)}}>
+                <TouchableOpacity  key={index} style={[index === activeIndex ? styles.activeT: null, styles.center]} onPress={() => {SetTabWrap(index)}}>
                   <Ionicons name={'ios-add-outline'} size={22} style={{color: '#fff', transform: [{scale: 1.5}]}}></Ionicons>
                 </TouchableOpacity>
               )
@@ -92,4 +100,16 @@ const styles = StyleSheet.create({
   }
 });
 
-export default TabList;
+// 更新数据
+const mapState = state => ({
+  tab: state.getIn(['tab', 'tab']),
+})
+const mapDispatch = dispatch => ({
+  setTab(index) {
+    console.log('-----set')
+    let action = actionsCreators.setTab(index);
+    dispatch(action)
+  }
+  
+})
+export default connect(mapState, mapDispatch)(TabList);

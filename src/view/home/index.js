@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import Scroll from '../scroll/index.js'
 import TabList from './tab'
+import Person from '../person'
 
 const {width, height, scale} = Dimensions.get('window');
 
@@ -14,6 +15,7 @@ const Home = () => {
   return (
     <View style={styles.scrollView} >
       <Scroll></Scroll>
+      <Person></Person>
       <TabList></TabList>
     </View>
   );

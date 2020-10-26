@@ -11,12 +11,16 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 const {width, height, scale} = Dimensions.get('window');
 
 const GoodInfo = (props) => {
-  const {itemInfo} = props
+  const {itemInfo, praiseVideo} = props
   const [activeIndex, setActiveIndex] = useState(0)
+  const  praiseVideoWrap = (id) => {
+    praiseVideo(id)
+    setActiveIndex(activeIndex + 1)
+  }
   return (
     <View style={styles.cont}>
-      <TouchableOpacity onStartShouldSetResponderCapture={()=>true} style={styles.items}>
-        <Ionicons name={'ios-heart'} size={30} style={{color: '#fff', transform: [{scale: 1.5}]}}></Ionicons>
+      <TouchableOpacity onStartShouldSetResponderCapture={()=>true} style={styles.items} onPress={() => praiseVideoWrap(itemInfo.id)}>
+        <Ionicons name={'ios-heart'} size={30} style={{color: itemInfo.praise?'red': '#fff', transform: [{scale: 1.5}]}}></Ionicons>
         <Text style={styles.text}>{itemInfo.good}</Text>
       </TouchableOpacity>
       <TouchableOpacity onStartShouldSetResponderCapture={()=>true} style={styles.items}>
