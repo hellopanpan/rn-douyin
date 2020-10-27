@@ -19,6 +19,7 @@
 		54172F7A07EAE5C624B9FFFC /* libPods-AwesomeProject2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4F0F9F83288AEA13FBB3828 /* libPods-AwesomeProject2.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		8E3510A56DEA73D995F084B8 /* libPods-AwesomeProject2-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B72FF6A645D7430F39EE2EB /* libPods-AwesomeProject2-tvOS.a */; };
+		A68BC6B625481B7B00B70366 /* bundle in Resources */ = {isa = PBXBuildFile; fileRef = A68BC6B525481B7B00B70366 /* bundle */; };
 		BF56E1AFEE3AF80139224A8C /* libPods-AwesomeProject2-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ADF4A8732302ED558A3DC98 /* libPods-AwesomeProject2-tvOSTests.a */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		A68BC67F2542D20F00B70366 /* AntDesign.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AntDesign.ttf; sourceTree = "<group>"; };
 		A68BC6812542D20F00B70366 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ionicons.ttf; sourceTree = "<group>"; };
 		A68BC6842542D20F00B70366 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		A68BC6B525481B7B00B70366 /* bundle */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bundle; sourceTree = "<group>"; };
 		A785437847F72C9773E9CC6C /* Pods-AwesomeProject2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AwesomeProject2.debug.xcconfig"; path = "Target Support Files/Pods-AwesomeProject2/Pods-AwesomeProject2.debug.xcconfig"; sourceTree = "<group>"; };
 		B02E177E8B59C3A5EE43CE35 /* Pods-AwesomeProject2-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AwesomeProject2-tvOS.release.xcconfig"; path = "Target Support Files/Pods-AwesomeProject2-tvOS/Pods-AwesomeProject2-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		B88F8D3BC9BDAA40D4B3AA67 /* Pods-AwesomeProject2-AwesomeProject2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AwesomeProject2-AwesomeProject2Tests.release.xcconfig"; path = "Target Support Files/Pods-AwesomeProject2-AwesomeProject2Tests/Pods-AwesomeProject2-AwesomeProject2Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 		13B07FAE1A68108700A75B9A /* AwesomeProject2 */ = {
 			isa = PBXGroup;
 			children = (
+				A68BC6B525481B7B00B70366 /* bundle */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -363,10 +366,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A68BC6942542D21000B70366 /* FontAwesome.ttf in Resources */,
-				A68BC6912542D20F00B70366 /* Ionicons.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
-				A68BC68F2542D20F00B70366 /* AntDesign.ttf in Resources */,
+				A68BC6B625481B7B00B70366 /* bundle in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
