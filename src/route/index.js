@@ -35,7 +35,7 @@ const Route = (props) => {
   return (
     <View style={styles.scrollView}>
       <NavigationContainer style={styles.nav} ref={navigationRef}>
-        <Stack.Navigator>
+        <Stack.Navigator >
           <Stack.Screen name="Home" 
             component={Home} 
             options={{
@@ -45,19 +45,22 @@ const Route = (props) => {
           <Stack.Screen name="Focus" 
             component={Focus} 
             options={{
-              header:  () => null
+              header:  () => null,
+              gestureEnabled: false
             }}
           />
           <Stack.Screen name="Msg" 
             component={Msg} 
             options={{
-              header:  () => null
+              header:  () => null,
+              gestureEnabled: false
             }}
           />
           <Stack.Screen name="Person" 
             component={Person} 
             options={{
-              header:  () => null
+              header:  () => null,
+              gestureEnabled: false
             }}
           />
         </Stack.Navigator>

@@ -14,9 +14,17 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 const {width, height, scale} = Dimensions.get('window');
 
 const Person = (props) => {
+  const {navigation} = props
   const goEdit = () => {
     console.log('edit------')
   }
+  useEffect(() => {
+    console.log('-----' + navigation)
+    navigation.addListener('state', e => {
+      // Prevent default action
+     console.log('----2323238' + e.target)
+    });
+  },[])
   return (
     <ScrollView style={styles.scrollView}>
       <View style={styles.topbanner}>
@@ -29,7 +37,7 @@ const Person = (props) => {
         <View style={styles.vcont}>
           <Image
             style={styles.tinyLogo}
-            source={require('../../static/1.jpg')}
+            source={require('../../static/0.jpg')}
           />
           <TouchableOpacity style={styles.btnWrap} pressDelay={0} onPress={() => goEdit()}>
             <Text style={[styles.btns, styles.widthbtn]}>编辑资料</Text>
