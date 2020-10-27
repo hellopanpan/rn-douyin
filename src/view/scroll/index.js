@@ -204,7 +204,6 @@ const Scroll = (props) => {
     return (
       <TouchableWithoutFeedback   onPress={changePlay} key={item.id}>
         <View style={[styles.item, {backgroundColor}]}>
-        <Text style={styles.title}>{index} | {item.id} - {selectedId} _ {good}</Text>
           <View  style={styles.backgroundVideo}>
             <Video 
               ref={videoPlayRef.current[index]}

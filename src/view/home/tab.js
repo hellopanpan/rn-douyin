@@ -32,6 +32,7 @@ let tabData = [{
   
 
 const TabList = (props) => {
+  console.log('-----tab' + props)
   const {tab, setTab, goNavigation} = props
   const [activeIndex, setActiveIndex] = useState(0)
 
