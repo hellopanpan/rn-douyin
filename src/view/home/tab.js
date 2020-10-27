@@ -12,6 +12,7 @@ import { connect } from 'react-redux';
 import { actionsCreators } from '../../store/tab'
 const {width, height, scale} = Dimensions.get('window');
 
+
 let tabData = [{
   name: '首页',
   id: 'index'
@@ -31,12 +32,13 @@ let tabData = [{
   
 
 const TabList = (props) => {
-  const {tab, setTab} = props
+  const {tab, setTab, goNavigation} = props
   const [activeIndex, setActiveIndex] = useState(0)
 
   const SetTabWrap = (index) => {
     setActiveIndex(index)
     setTab(index)
+    goNavigation(index)
   }
   return (
     <View style={styles.cont}>

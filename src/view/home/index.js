@@ -11,12 +11,13 @@ import Person from '../person'
 
 const {width, height, scale} = Dimensions.get('window');
 
-const Home = () => {
+const Home = ({navigation}) => {
+  
   return (
     <View style={styles.scrollView} >
-      <Scroll></Scroll>
-      <Person></Person>
-      <TabList></TabList>
+      <Scroll navigation={navigation}></Scroll>
+      {/* <Person></Person>
+      <TabList></TabList> */}
     </View>
   );
 };

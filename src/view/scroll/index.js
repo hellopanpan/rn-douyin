@@ -35,11 +35,13 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import GoodInfo from './goodInfo';
 import {DATA} from '../../api/config'
 
+import { useFocusEffect } from '@react-navigation/native';
+
 const {width, height, scale} = Dimensions.get('window');
 
 const Scroll = (props) => {
   
-  const {good, list} = props
+  const {good, list, navigation} = props
   const {changeData, setList, praiseVideo} = props
   console.log(list)
   const [text, setText] = useState('')
@@ -151,6 +153,19 @@ const Scroll = (props) => {
   useEffect(() => {
     setList(DATA)
   }, [])
+  // 监听屏幕离开
+  useFocusEffect(
+    React.useCallback(() => {
+      console.log('enedjdjdj')
+      // Do something when the screen is focused
+      setPlay(true)
+      return () => {
+        console.log('enedjdjdj-----leaver')
+        setPlay(false)
+        // Do something when the screen is unfocused
+      };
+    }, [])
+  );
   // 滚动
   const handelonScroll = (e) => {
     // 滚动偏移量
