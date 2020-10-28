@@ -9,33 +9,23 @@ import {
 
 const {width, height, scale} = Dimensions.get('window');
 import 'react-native-gesture-handler';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useRoute, useNavigationState } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
+const RootStack = createStackNavigator();
 
 import Home from '../view/home/index.js';
 import Tab from '../view/home/tab.js';
+import Model from '../view/Model/index.js';
 import Msg from '../view/msg/index.js';
 import Focus from '../view/focus/index.js';
 import Person from '../view/person/index.js';
 
-const Route = (props) => {
-  // 获取路由据点
-  const navigationRef = React.useRef(null);
-
-  const goNavigation = (index) => {
-    let path ='Home'
-    if (index == 0) path = 'Home'
-    if (index == 1) path = 'Focus'
-    if (index == 3) path = 'Msg'
-    if (index == 4) path = 'Person'
-    navigationRef.current?.navigate(path)
-  }
-  return (
-    <View style={styles.scrollView}>
-      <NavigationContainer style={styles.nav} ref={navigationRef}>
-        <Stack.Navigator >
+const MainStack = ({navigation}) => {
+  return(
+    <View style={{flex: 1}}>
+      <Stack.Navigator >
           <Stack.Screen name="Home" 
             component={Home} 
             options={{
@@ -46,26 +36,47 @@ const Route = (props) => {
             component={Focus} 
             options={{
               header:  () => null,
-              gestureEnabled: false
             }}
           />
           <Stack.Screen name="Msg" 
             component={Msg} 
             options={{
               header:  () => null,
-              gestureEnabled: false
             }}
           />
           <Stack.Screen name="Person" 
             component={Person} 
             options={{
               header:  () => null,
-              gestureEnabled: false
             }}
           />
         </Stack.Navigator>
+        <Model></Model>
+        <Tab navigation={navigation} ></Tab>
+    </View>
+        
+  )
+}
+
+const Route = (props) => {
+  // 获取路由据点
+  const navigationRef = React.useRef(null);
+  return (
+    <View style={styles.scrollView}>
+      <NavigationContainer style={styles.nav} ref={navigationRef} >
+        <RootStack.Navigator mode="modal">
+          <RootStack.Screen 
+            name="Tab" 
+            component={MainStack} 
+            options={{
+              header:  () => null,
+              gestureEnabled: false
+            }}
+          >
+          </RootStack.Screen>
+        </RootStack.Navigator>
       </NavigationContainer>
-      <Tab goNavigation = {goNavigation} ></Tab>
+      
     </View>
   )
 }

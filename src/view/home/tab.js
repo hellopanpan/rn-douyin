@@ -32,9 +32,30 @@ let tabData = [{
   
 
 const TabList = (props) => {
-  console.log('-----tab' + props)
-  const {tab, setTab, goNavigation} = props
+  console.log('-----tab' + props.navigation)
+  const {tab, setTab, navigation} = props
   const [activeIndex, setActiveIndex] = useState(0)
+
+  const goNavigation = (index) => {
+    let path ='Home'
+    if (index == 0) path = 'Home'
+    if (index == 1) path = 'Focus'
+    if (index == 3) path = 'Msg'
+    if (index == 4) path = 'Person'
+    navigation.navigate(path, {
+        itemId: index
+    })
+  }
+  useEffect(() => {
+    navigation.addListener('state', e => {
+      // Prevent default action
+     if (e.data.state.routes[0].state) {
+      // let index = Object.keys(e.data.state.routes[0].state.tabstale)
+      let index = e.data.state.routes[0].state.type
+      console.log('----2323238--tab' + index)
+     }
+    });
+  }, []);
 
   const SetTabWrap = (index) => {
     setActiveIndex(index)
@@ -70,7 +91,8 @@ const styles = StyleSheet.create({
     paddingLeft: 10, 
     paddingRight: 10, 
     alignItems: 'center',
-    height: 50
+    height: 50,
+    backgroundColor: '#222'
   },
   item: {
     height: 40,

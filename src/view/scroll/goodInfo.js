@@ -9,9 +9,13 @@ import {
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 const {width, height, scale} = Dimensions.get('window');
+import { useNavigation } from '@react-navigation/native';
+import { connect } from 'react-redux';
+import { actionsCreators } from '../../store/play'
 
 const GoodInfo = (props) => {
-  const {itemInfo, praiseVideo} = props
+  const navigation = useNavigation();
+  const {itemInfo, praiseVideo, setModel, comentModel} = props
   const [activeIndex, setActiveIndex] = useState(0)
   const  praiseVideoWrap = (id) => {
     praiseVideo(id)
@@ -23,7 +27,7 @@ const GoodInfo = (props) => {
         <Ionicons name={'ios-heart'} size={30} style={{color: itemInfo.praise?'red': '#fff', transform: [{scale: 1.5}]}}></Ionicons>
         <Text style={styles.text}>{itemInfo.good}</Text>
       </TouchableOpacity>
-      <TouchableOpacity onStartShouldSetResponderCapture={()=>true} style={styles.items}>
+      <TouchableOpacity onStartShouldSetResponderCapture={()=>true} style={styles.items} onPress={() => setModel(true)}>
         <Ionicons name={'ios-chatbox-ellipses'} size={30} style={{color: '#fff', transform: [{scale: 1.5}]}}></Ionicons>
         <Text style={styles.text}>{itemInfo.comment}</Text>
       </TouchableOpacity>
@@ -59,4 +63,16 @@ const styles = StyleSheet.create({
   }
 });
 
-export default GoodInfo;
+// 更新数据
+const mapState = state => ({
+  comentModel: state.getIn(['play', 'comentModel']),
+})
+const mapDispatch = dispatch => ({
+  setModel(value) {
+    console.log('-----set')
+    let action = actionsCreators.setModel(value);
+    dispatch(action)
+  }
+  
+})
+export default connect(mapState, mapDispatch)(GoodInfo); 

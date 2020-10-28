@@ -1,14 +1,16 @@
 import { 
   SET_INFO,
   SET_LIST,
-  SET_PRAISE
+  SET_PRAISE,
+  SET_MODEL
  } from './actionType'
 // immutable 库
 import { fromJS} from 'immutable'
 
 const defaultState = fromJS({
   good: 16666,
-  list: []
+  list: [],
+  comentModel: false
 })
 
 export default (state = defaultState, action) => {
@@ -20,6 +22,10 @@ export default (state = defaultState, action) => {
     console.log('00000-set---list---22')
     console.log(action.value)
     return state.set('list', action.value)
+  };
+  if (action.type == SET_MODEL ) {
+    console.log('----seeeeewweew')
+    return state.set('comentModel', action.value)
   };
   if (action.type == SET_PRAISE ) {
     console.log('praise')

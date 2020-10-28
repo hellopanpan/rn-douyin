@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
   scrollView: {
     width: width,
     backgroundColor: '#444',
+    opacity: 0.1,
     height: 2* height
   },
   text: {

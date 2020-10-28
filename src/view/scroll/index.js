@@ -293,8 +293,8 @@ const styles = StyleSheet.create({
   },
   loadingText: {
     width: width,
-    height: 80,
-    lineHeight: 40,
+    height: 160,
+    lineHeight: 10,
     backgroundColor: '#222',
     color: '#fff',
     textAlign: 'center'

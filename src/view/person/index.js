@@ -22,7 +22,7 @@ const Person = (props) => {
     console.log('-----' + navigation)
     navigation.addListener('state', e => {
       // Prevent default action
-     console.log('----2323238' + e.target)
+     console.log('----222222---person' + e.data.state.routes[e.data.state.routes.length -1].name)
     });
   },[])
   return (

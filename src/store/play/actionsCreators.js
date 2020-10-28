@@ -1,7 +1,8 @@
 import { 
   SET_INFO,
   SET_LIST,
-  SET_PRAISE
+  SET_PRAISE,
+  SET_MODEL
 } from './actionType'
 
 export const setInfo = () => ({
@@ -13,5 +14,9 @@ export const setList= (value) => ({
 });
 export const praiseVideo= (value) => ({
   type: SET_PRAISE,
+  value
+});
+export const setModel= (value) => ({
+  type: SET_MODEL,
   value
 });
