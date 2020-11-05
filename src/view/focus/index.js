@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     width: 5,
     height: 5,
     borderRadius: 2.5,
-    backgroundColor: 'green',
+    backgroundColor: '#333',
     marginRight: 5
   },
   livetext: {

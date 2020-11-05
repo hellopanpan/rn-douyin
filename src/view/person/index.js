@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
   topbanner: {
     height: 180,
     width: width,
-    backgroundColor: 'green'
+    backgroundColor: '#333'
   },
   ccont: {
     paddingLeft: 20,
