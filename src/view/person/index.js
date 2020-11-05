@@ -3,6 +3,7 @@ import {
   Dimensions,
   StyleSheet,
   View,
+  StatusBar,
   ScrollView,
   Text,
   Image,
@@ -28,6 +29,7 @@ const Person = (props) => {
   },[])
   return (
     <ScrollView style={styles.scrollView}>
+      <StatusBar barStyle="light-content" />
       <View style={styles.topbanner}>
         <Image
           style={styles.topbanner}

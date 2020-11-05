@@ -3,6 +3,7 @@ import {
   Dimensions,
   StyleSheet,
   View,
+  StatusBar,
   ScrollView,
   Text,
   SafeAreaView,
@@ -18,6 +19,7 @@ const Person = (props) => {
 
   return (
     <ScrollView style={styles.scrollView}>
+      <StatusBar barStyle="dark-content" backgroundColor="#ecf0f1" />
       <SafeAreaView>
         <View style={styles.focuscont}>
           {

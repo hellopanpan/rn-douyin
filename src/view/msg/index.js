@@ -6,6 +6,7 @@ import {
   Image,
   SafeAreaView,
   ScrollView,
+  StatusBar,
   Text,
   TouchableOpacity
 } from 'react-native';
@@ -16,6 +17,7 @@ import {MSG} from '../../api/config'
 const Person = (props) => {
   return (
     <ScrollView style={styles.scrollView}>
+      <StatusBar barStyle="dark-content" backgroundColor="#ecf0f1" />
       <SafeAreaView>
         <View >
           {
