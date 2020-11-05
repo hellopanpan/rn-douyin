@@ -294,9 +294,9 @@ const styles = StyleSheet.create({
   loadingText: {
     width: width,
     height: 160,
-    lineHeight: 10,
+    lineHeight: 100,
     backgroundColor: '#222',
-    color: '#fff',
+    color: '#999',
     textAlign: 'center'
   }
 });

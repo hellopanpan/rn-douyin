@@ -12,6 +12,7 @@ import {
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 const {width, height, scale} = Dimensions.get('window');
+import {PERSON} from '../../api/config'
 
 const Person = (props) => {
   const {navigation} = props
@@ -60,7 +61,28 @@ const Person = (props) => {
           <Text style={styles.locItem}>成都</Text>
           <Text style={styles.locItem}>中南大学</Text>
         </View>
-        
+      </View>
+      <View style={styles.focuscont}>
+        {
+          PERSON.map((item, index) => {
+            return (
+              <View style={styles.focusImgWrap} key = {index}>
+                <Image
+                  style={styles.focusImg}
+                  source={item.url}
+                />
+                {
+                  item.play? (
+                    <View style={styles.perplay}>
+                      <Ionicons name={'ios-play'} size={16} style={{color: '#fff', transform: [{translateX: 0}, {translateY: 0}]}}></Ionicons>
+                      <Text style={styles.pertext}>{item.play}</Text>
+                    </View>
+                  ) : null
+                }
+              </View> 
+            )
+          })
+        }
       </View>
     </ScrollView>
   )
@@ -70,6 +92,41 @@ const styles = StyleSheet.create({
     width: width,
     backgroundColor: '#222',
     height: 2* height
+  },
+  focuscont: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    padding: 10,
+    marginTop: 10,
+  },
+  focusImgWrap: {
+    width: width / 3 - 8,
+    marginBottom: 12,
+    position: 'relative'
+  },
+  perplay: {
+    position: 'absolute',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    bottom: 5,
+    left: 10,
+    flex: 1,
+    width: width / 3 - 15,
+    color: '#fff',
+    opacity: 0.9
+  }, 
+  pertext: {
+    fontSize: 12,
+    color: '#fff',
+    marginLeft: 4
+  },
+  focusImg: {
+    height: width / 3  + 0,
+    width: width / 3 - 15,
+    opacity: 0.8
   },
   text: {
     padding: 0,

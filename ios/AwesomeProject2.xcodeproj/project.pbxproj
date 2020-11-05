@@ -756,7 +756,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.panpan1;
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.douyin;
 				PRODUCT_NAME = AwesomeProject2;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -779,7 +779,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.panpan1;
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.douyin;
 				PRODUCT_NAME = AwesomeProject2;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";

@@ -33,3 +33,247 @@ export const DATA = [
     comment: '0'
   },
 ];
+
+export const FOCUS = [
+  {
+    url: require('../static/img/1.jpg'),
+    live: false,
+  },
+  {
+    url: require('../static/img/2.jpg'),
+    live: true,
+  },
+  {
+    url: require('../static/img/3.jpg'),
+    live: false,
+  },
+  {
+    url: require('../static/img/4.jpg'),
+    live: true,
+  },
+  {
+    url: require('../static/img/5.jpg'),
+    live: true,
+  },
+  {
+    url: require('../static/img/6.jpg'),
+    live: false,
+  },
+  {
+    url: require('../static/img/7.jpg'),
+    live: false,
+  },
+  {
+    url: require('../static/img/8.jpg'),
+    live: true,
+  },
+  {
+    url: require('../static/img/6.jpg'),
+    live: true,
+  },
+  {
+    url: require('../static/img/3.jpg'),
+    live: false,
+  },
+  {
+    url: require('../static/img/4.jpg'),
+    live: true,
+  },
+  {
+    url: require('../static/img/2.jpg'),
+    live: true,
+  },
+  {
+    url: require('../static/img/1.jpg'),
+    live: false,
+  },
+  {
+    url: require('../static/img/5.jpg'),
+    live: false,
+  },
+  {
+    url: require('../static/img/7.jpg'),
+    live: true,
+  },
+  {
+    url: require('../static/img/8.jpg'),
+    live: false,
+  },
+
+]
+
+export const MSG = [
+  {
+    whopic: require('../static/img/liu.jpg'),
+    live: false,
+    time: '1分钟',
+    name: '刘亦菲',
+    workpic: require('../static/img/8.jpg'),
+  },
+  {
+    whopic: require('../static/img/liu.jpg'),
+    live: false,
+    time: '2分钟',
+    name: '刘亦菲',
+    workpic: require('../static/img/3.jpg'),
+  },
+  {
+    whopic: require('../static/img/zhou.jpg'),
+    live: false,
+    time: '2分钟',
+    name: '周杰伦',
+    workpic: require('../static/img/3.jpg'),
+  },
+  {
+    whopic: require('../static/img/liu.jpg'),
+    live: false,
+    time: '2分钟',
+    name: '刘亦菲',
+    workpic: require('../static/img/4.jpg'),
+  },
+  {
+    whopic: require('../static/img/zhao.jpg'),
+    live: false,
+    time: '2分钟',
+    name: '赵丽颖',
+    workpic: require('../static/img/4.jpg'),
+  },
+  {
+    whopic: require('../static/img/zhao.jpg'),
+    live: false,
+    time: '10分钟',
+    name: '赵丽颖',
+    workpic: require('../static/img/3.jpg'),
+  },
+  {
+    whopic: require('../static/img/liu.jpg'),
+    live: false,
+    time: '12分钟',
+    name: '刘亦菲',
+    workpic: require('../static/img/1.jpg'),
+  },
+  {
+    whopic: require('../static/img/zhou.jpg'),
+    live: false,
+    time: '12分钟',
+    name: '周杰伦',
+    workpic: require('../static/img/1.jpg'),
+  },
+  {
+    whopic: require('../static/img/liu.jpg'),
+    live: false,
+    time: '14分钟',
+    name: '刘亦菲',
+    workpic: require('../static/img/2.jpg'),
+  },
+  {
+    whopic: require('../static/img/zhou.jpg'),
+    live: false,
+    time: '14分钟',
+    name: '周杰伦',
+    workpic: require('../static/img/2.jpg'),
+  },
+  {
+    whopic: require('../static/img/zhao.jpg'),
+    live: false,
+    time: '14分钟',
+    name: '赵丽颖',
+    workpic: require('../static/img/2.jpg'),
+  },
+  {
+    whopic: require('../static/img/zhao.jpg'),
+    live: false,
+    time: '16分钟',
+    name: '赵丽颖',
+    workpic: require('../static/img/5.jpg'),
+  },
+  {
+    whopic: require('../static/img/liu.jpg'),
+    live: false,
+    time: '20分钟',
+    name: '刘亦菲',
+    workpic: require('../static/img/5.jpg'),
+  },
+  {
+    whopic: require('../static/img/zhou.jpg'),
+    live: false,
+    time: '20分钟',
+    name: '周杰伦',
+    workpic: require('../static/img/5.jpg'),
+  },
+  {
+    whopic: require('../static/img/zhou.jpg'),
+    live: false,
+    time: '21分钟',
+    name: '周杰伦',
+    workpic: require('../static/img/7.jpg'),
+  },
+]
+
+export const PERSON = [
+  {
+    url: require('../static/img/1.jpg'),
+    play: '6.2w'
+  },
+  {
+    url: require('../static/img/2.jpg'),
+    play: '7.6w'
+  },
+  {
+    url: require('../static/img/3.jpg'),
+    play: '1.21w'
+  },
+  {
+    url: require('../static/img/4.jpg'),
+    play: '102.26w'
+  },
+  {
+    url: require('../static/img/5.jpg'),
+    play: '7.7w'
+  },
+  {
+    url: require('../static/img/6.jpg'),
+    play: '11.6w'
+  },
+  {
+    url: require('../static/img/7.jpg'),
+    play: '12.2w'
+  },
+  {
+    url: require('../static/img/8.jpg'),
+    play: '41.2w'
+  },
+  {
+    url: require('../static/img/6.jpg'),
+    play: '400.2w'
+  },
+  {
+    url: require('../static/img/3.jpg'),
+    play: '11.6w'
+  },
+  {
+    url: require('../static/img/4.jpg'),
+    play: '11.8w'
+  },
+  {
+    url: require('../static/img/2.jpg'),
+    play: '101.2w'
+  },
+  {
+    url: require('../static/img/1.jpg'),
+    play: '41.21w'
+  },
+  {
+    url: require('../static/img/5.jpg'),
+    play: '3.3w'
+  },
+  {
+    url: require('../static/img/7.jpg'),
+    play: '5.2w'
+  },
+  {
+    url: require('../static/img/8.jpg'),
+    play: '6.2w'
+  },
+
+]

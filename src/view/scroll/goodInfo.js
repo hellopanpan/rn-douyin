@@ -4,6 +4,7 @@ import {
   StyleSheet,
   View,
   Text,
+  TouchableWithoutFeedback,
   TouchableOpacity
 } from 'react-native';
 
@@ -23,10 +24,12 @@ const GoodInfo = (props) => {
   }
   return (
     <View style={styles.cont}>
-      <TouchableOpacity onStartShouldSetResponderCapture={()=>true} style={styles.items} onPress={() => praiseVideoWrap(itemInfo.id)}>
-        <Ionicons name={'ios-heart'} size={30} style={{color: itemInfo.praise?'red': '#fff', transform: [{scale: 1.5}]}}></Ionicons>
-        <Text style={styles.text}>{itemInfo.good}</Text>
-      </TouchableOpacity>
+      <TouchableWithoutFeedback onStartShouldSetResponderCapture={()=>true}  onPress={() => praiseVideoWrap(itemInfo.id)}>
+        <View style={styles.items}>
+          <Ionicons name={'ios-heart'} size={30} style={{color: itemInfo.praise?'red': '#fff', transform: [{scale: 1.5}]}}></Ionicons>
+          <Text style={styles.text}>{itemInfo.good}</Text>
+        </View>
+      </TouchableWithoutFeedback>
       <TouchableOpacity onStartShouldSetResponderCapture={()=>true} style={styles.items} onPress={() => setModel(true)}>
         <Ionicons name={'ios-chatbox-ellipses'} size={30} style={{color: '#fff', transform: [{scale: 1.5}]}}></Ionicons>
         <Text style={styles.text}>{itemInfo.comment}</Text>
