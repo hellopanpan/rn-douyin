@@ -21,8 +21,10 @@ import Model from '../view/Model/index.js';
 import Msg from '../view/msg/index.js';
 import Focus from '../view/focus/index.js';
 import Person from '../view/person/index.js';
-
-const MainStack = ({navigation}) => {
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+const MainStack = ({navigation, route}) => {
+  let routeName = getFocusedRouteNameFromRoute(route)
+  console.log('-----route'+ routeName)
   return(
     <View style={{flex: 1}}>
       <Stack.Navigator >
@@ -52,7 +54,7 @@ const MainStack = ({navigation}) => {
           />
         </Stack.Navigator>
         <Model></Model>
-        <Tab navigation={navigation} ></Tab>
+        <Tab navigation={navigation} routeName={routeName} ></Tab>
     </View>
         
   )

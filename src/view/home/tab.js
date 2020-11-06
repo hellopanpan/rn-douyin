@@ -35,7 +35,7 @@ let tabData = [{
 
 const TabList = (props) => {
   console.log('-----tab' + props.navigation)
-  const {tab, setTab, navigation} = props
+  const {tab, setTab, navigation, routeName} = props
   const [activeIndex, setActiveIndex] = useState(0)
   const insets = useSafeAreaInsets();
 
@@ -59,6 +59,14 @@ const TabList = (props) => {
      }
     });
   }, []);
+
+  useEffect(() => {
+    if (routeName === 'Home') setActiveIndex(0)
+    if (routeName === 'Focus') setActiveIndex(1)
+    if (routeName === 'Msg') setActiveIndex(3)
+    if (routeName === 'Person') setActiveIndex(4)
+  }, [routeName])
+
 
   const SetTabWrap = (index) => {
     setActiveIndex(index)
