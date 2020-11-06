@@ -10,7 +10,9 @@ import Scroll from '../scroll/index.js'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { connect } from 'react-redux';
 import { actionsCreators } from '../../store/tab'
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 const {width, height, scale} = Dimensions.get('window');
+
 
 
 let tabData = [{
@@ -35,6 +37,7 @@ const TabList = (props) => {
   console.log('-----tab' + props.navigation)
   const {tab, setTab, navigation} = props
   const [activeIndex, setActiveIndex] = useState(0)
+  const insets = useSafeAreaInsets();
 
   const goNavigation = (index) => {
     let path ='Home'
@@ -63,7 +66,7 @@ const TabList = (props) => {
     goNavigation(index)
   }
   return (
-    <View style={styles.cont}>
+    <View style={[styles.cont, {paddingBottom: insets.bottom}]}>
         {
           tabData.map((item, index) =>  {
             return(
@@ -91,11 +94,10 @@ const styles = StyleSheet.create({
     paddingLeft: 10, 
     paddingRight: 10, 
     alignItems: 'center',
-    height: 50,
     backgroundColor: '#222'
   },
   item: {
-    height: 40,
+    height: 50,
     justifyContent: 'center',
     alignItems: 'center',
     width: 50,
