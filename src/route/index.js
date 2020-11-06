@@ -19,6 +19,7 @@ import Home from '../view/home/index.js';
 import Tab from '../view/home/tab.js';
 import Model from '../view/Model/index.js';
 import Msg from '../view/msg/index.js';
+import Camera from '../view/camera/index.js';
 import Focus from '../view/focus/index.js';
 import Person from '../view/person/index.js';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
@@ -27,7 +28,7 @@ const MainStack = ({navigation, route}) => {
   console.log('-----route'+ routeName)
   return(
     <View style={{flex: 1}}>
-      <Stack.Navigator >
+      <Stack.Navigator initialRouteName="Home">
           <Stack.Screen name="Home" 
             component={Home} 
             options={{
@@ -36,6 +37,12 @@ const MainStack = ({navigation, route}) => {
           />
           <Stack.Screen name="Focus" 
             component={Focus} 
+            options={{
+              header:  () => null,
+            }}
+          />
+          <Stack.Screen name="Camera" 
+            component={Camera} 
             options={{
               header:  () => null,
             }}

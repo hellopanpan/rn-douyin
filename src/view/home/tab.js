@@ -43,6 +43,7 @@ const TabList = (props) => {
     let path ='Home'
     if (index == 0) path = 'Home'
     if (index == 1) path = 'Focus'
+    if (index == 2) path = 'Camera'
     if (index == 3) path = 'Msg'
     if (index == 4) path = 'Person'
     navigation.navigate(path, {
@@ -63,6 +64,7 @@ const TabList = (props) => {
   useEffect(() => {
     if (routeName === 'Home') setActiveIndex(0)
     if (routeName === 'Focus') setActiveIndex(1)
+    if (routeName === 'Camera') setActiveIndex(2)
     if (routeName === 'Msg') setActiveIndex(3)
     if (routeName === 'Person') setActiveIndex(4)
   }, [routeName])
