@@ -1,4 +1,4 @@
-## react hooks+ React Ntive 抖抖APP (仿抖音)
+## react hooks+ React Native 抖抖APP (仿抖音)
 ### 1.体验
 ios: 真机or模拟器
 
