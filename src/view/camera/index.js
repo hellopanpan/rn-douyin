@@ -142,7 +142,7 @@ const CameraC = (props) => {
       <TouchableOpacity onPress={() => takeRecord()} style={[styles.takepicWrap, styles.flexRow]}>
         <Animated.View style={[styles.takepicIn, {opacity: opacityRef.current}]}></Animated.View>
       </TouchableOpacity>
-      { picSourceRef.current? (
+      { picSourceRef.current ? (
         // 查看录像
         <TouchableOpacity onPress={() => setShowVideo(true)} style={[styles.takepicWrap2, styles.flexRow]}>
           <Image
@@ -153,7 +153,7 @@ const CameraC = (props) => {
       ) : null}
       
       {
-        showVideo ? (
+        showVideo && foucs ? (
           <View style={styles.VideoWrap}>
             <TouchableOpacity onPress={() => setShowVideo(false)} style={styles.close}>
               <Ionicons name={'ios-close-circle'} size={22} style={[{color: '#fff', transform: [{scale: 2}]}]}></Ionicons>
