@@ -18,6 +18,7 @@ import {PERSON} from '../../api/config'
 const Person = (props) => {
   const {navigation} = props
   const goEdit = () => {
+    navigation.navigate('Full', { screen: 'PersonEdit' })
     console.log('edit------')
   }
   useEffect(() => {

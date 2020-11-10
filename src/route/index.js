@@ -13,6 +13,7 @@ import { NavigationContainer, useRoute, useNavigationState } from '@react-naviga
 import { createStackNavigator } from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
+const FullStack = createStackNavigator();
 const RootStack = createStackNavigator();
 
 import Home from '../view/home/index.js';
@@ -22,46 +23,60 @@ import Msg from '../view/msg/index.js';
 import Camera from '../view/camera/index.js';
 import Focus from '../view/focus/index.js';
 import Person from '../view/person/index.js';
+import PersonEdit from '../view/person/edit.js';
+import PersonEditMore from '../view/person/edit.more.js';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+const FullStackComponent = () => {
+  return(
+    <FullStack.Navigator>
+      <FullStack.Screen name="PersonEdit" 
+        component={PersonEdit}
+      />
+      <FullStack.Screen name="PersonEditMore" 
+        component={PersonEditMore}
+      />
+    </FullStack.Navigator>
+  )
+}
 const MainStack = ({navigation, route}) => {
   let routeName = getFocusedRouteNameFromRoute(route)
   console.log('-----route'+ routeName)
   return(
     <View style={{flex: 1}}>
       <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name="Home" 
-            component={Home} 
-            options={{
-              header:  () => null
-            }}
-          />
-          <Stack.Screen name="Focus" 
-            component={Focus} 
-            options={{
-              header:  () => null,
-            }}
-          />
-          <Stack.Screen name="Camera" 
-            component={Camera} 
-            options={{
-              header:  () => null,
-            }}
-          />
-          <Stack.Screen name="Msg" 
-            component={Msg} 
-            options={{
-              header:  () => null,
-            }}
-          />
-          <Stack.Screen name="Person" 
-            component={Person} 
-            options={{
-              header:  () => null,
-            }}
-          />
-        </Stack.Navigator>
-        <Model></Model>
-        <Tab navigation={navigation} routeName={routeName} ></Tab>
+        <Stack.Screen name="Home" 
+          component={Home} 
+          options={{
+            header:  () => null
+          }}
+        />
+        <Stack.Screen name="Focus" 
+          component={Focus} 
+          options={{
+            header:  () => null,
+          }}
+        />
+        <Stack.Screen name="Camera" 
+          component={Camera} 
+          options={{
+            header:  () => null,
+          }}
+        />
+        <Stack.Screen name="Msg" 
+          component={Msg} 
+          options={{
+            header:  () => null,
+          }}
+        />
+        <Stack.Screen name="Person" 
+          component={Person} 
+          options={{
+            header:  () => null,
+          }}
+        />
+      </Stack.Navigator>
+      <Model></Model>
+      <Tab navigation={navigation} routeName={routeName} ></Tab>
     </View>
         
   )
@@ -73,19 +88,27 @@ const Route = (props) => {
   return (
     <View style={styles.scrollView}>
       <NavigationContainer style={styles.nav} ref={navigationRef} >
-        <RootStack.Navigator mode="modal">
+        <RootStack.Navigator >
           <RootStack.Screen 
             name="Tab" 
             component={MainStack} 
             options={{
               header:  () => null,
-              gestureEnabled: false
+              gestureEnabled: true
+            }}
+          >
+          </RootStack.Screen>
+          <RootStack.Screen 
+            name="Full" 
+            component={FullStackComponent} 
+            options={{
+              header:  () => null,
+              gestureEnabled: true
             }}
           >
           </RootStack.Screen>
         </RootStack.Navigator>
       </NavigationContainer>
-      
     </View>
   )
 }

@@ -275,5 +275,21 @@ export const PERSON = [
     url: require('../static/img/8.jpg'),
     play: '6.2w'
   },
-
 ]
+
+export const EditList = [{
+  key: '名字' ,
+  value: '我的抖抖账号'
+},
+{
+  key: '简介' ,
+  value: '我的抖抖账号感谢支持我的朋友们'
+}, 
+{
+  key: '性别' ,
+  value: '男'
+}, 
+{
+  key: '生日' ,
+  value: '1992.02.11'
+}]
