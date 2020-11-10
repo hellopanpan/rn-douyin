@@ -15,37 +15,57 @@ import {
 import Ionicons from 'react-native-vector-icons/Ionicons';
 const {width, height, scale} = Dimensions.get('window');
 import {EditList} from '../../api/config'
+import HeaderBack from '../../components/header/index.js'
+import Select from '../../components/selectPic/index.js'
+
+import { connect } from 'react-redux'
+import { useNavigation } from '@react-navigation/native'; 
 
 const Person = (props) => {
-  const {navigation} = props
-
+  const {user, pic} = props
+  const [showDiao, setShowDiao] = useState(false)
+  const navigation = useNavigation()
   useEffect(() => {
+    console.log(user)
   },[])
+  const showImg = () => {
+    console.log('show img')
+  }
+  const cancel = () => {
+    setShowDiao(false)
+    console.log('show cancel')
+  }
+  // 选取图片回调
+  const callBack = (res) => {
+    console.log(res)
+  }
   return (
-    <ScrollView style={styles.scrollView}>
+    <View style={styles.scrollView}>
       <StatusBar barStyle="light-content" />
       <SafeAreaView>
-        <View style={[styles.topback, styles.flexRow]}>
-          <TouchableOpacity style={styles.topbackIcon} onPress={() => navigation.goBack()}>
-            <Ionicons name={'md-chevron-back'} size={33} style={{color: '#fff', transform: [{translateX: 0}, {translateY: 0}]}}></Ionicons>
-          </TouchableOpacity>
-          <Text style={styles.topbackTitle}>编辑个人资料</Text>
-        </View>
-        <View style={[styles.topbanner, styles.flexRow]}>
+        <HeaderBack title={'编辑个人资料'}></HeaderBack>
+        <TouchableOpacity style={[styles.topbanner, styles.flexRow]} onPress={() => setShowDiao(true)}>
           <Image
             style={styles.topbannerPic}
-            source={require('../../static/0.jpg')}
+            source={pic}
           />
           <Text style={styles.topbanerText}>点击更换头像</Text>
-        </View>
+        </TouchableOpacity>
         <View style={styles.editCont}>
         {
-          EditList.map((item, index) => {
+          user.map((item, index) => {
+            console.log('-----sor' + item)
             return(
-              <TouchableOpacity key={index}>
+              <TouchableOpacity key={index} onPress={() => {
+                navigation.navigate('PersonEditMore', {
+                  index: index,
+                  key: item.get('key'),
+                  value: item.get('value'),
+                })
+              }}>
                 <View style={[styles.editContItem]}>
-                  <Text style={styles.editContName}>{item.key}</Text>
-                  <Text style={styles.editContDiscribe}>{item.value}</Text>
+                  <Text style={styles.editContName}>{item.get('key')}</Text>
+                  <Text style={styles.editContDiscribe}>{item.get('value')}</Text>
                   <View style={styles.editContIcon}>
                     <Ionicons name={'md-chevron-back'}  size={20} style={{color: '#ccc', transform: [{rotateY: '180deg'}]}}></Ionicons>
                   </View>
@@ -56,8 +76,8 @@ const Person = (props) => {
         }
         </View>
       </SafeAreaView>
-      
-    </ScrollView>
+        <Select showImg={showImg} cancel={cancel} showDiao={showDiao} ></Select>
+    </View>
   )
 }
 const styles = StyleSheet.create({
@@ -65,6 +85,8 @@ const styles = StyleSheet.create({
     width: width,
     backgroundColor: '#222',
     height: height,
+    position: 'relative',
+    width: width
   },
   flexRow: {
     display: 'flex',
@@ -127,4 +149,10 @@ const styles = StyleSheet.create({
     fontSize: 16
   }
 });
-export default Person
+// 数据
+const mapState = state => ({
+  user: state.getIn(['play', 'user']),
+  pic: state.getIn(['play', 'pic']),
+})
+
+export default connect(mapState, null)(Person);

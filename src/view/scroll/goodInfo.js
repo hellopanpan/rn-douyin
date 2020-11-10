@@ -36,7 +36,7 @@ const GoodInfo = (props) => {
       </TouchableOpacity>
       <TouchableOpacity onStartShouldSetResponderCapture={()=>true} style={styles.items}>
         <Ionicons name={'ios-share-social-sharp'} size={30} style={{color: '#fff', transform: [{scale: 1.5}]}}></Ionicons>
-        <Text style={styles.text}>{itemInfo.good}</Text>
+        <Text style={styles.text}>{itemInfo.share}</Text>
       </TouchableOpacity>
     </View>
   );

@@ -14,9 +14,10 @@ import {
 import Ionicons from 'react-native-vector-icons/Ionicons';
 const {width, height, scale} = Dimensions.get('window');
 import {PERSON} from '../../api/config'
+import { connect } from 'react-redux'
 
 const Person = (props) => {
-  const {navigation} = props
+  const {navigation, pic} = props
   const goEdit = () => {
     navigation.navigate('Full', { screen: 'PersonEdit' })
     console.log('edit------')
@@ -41,7 +42,7 @@ const Person = (props) => {
         <View style={styles.vcont}>
           <Image
             style={styles.tinyLogo}
-            source={require('../../static/0.jpg')}
+            source={pic}
           />
           <TouchableOpacity style={styles.btnWrap} pressDelay={0} onPress={() => goEdit()}>
             <Text style={[styles.btns, styles.widthbtn]}>编辑资料</Text>
@@ -211,4 +212,9 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
 });
-export default Person
+// 数据
+const mapState = state => ({
+  user: state.getIn(['play', 'user']),
+  pic: state.getIn(['play', 'pic']),
+})
+export default connect(mapState, null)(Person);
