@@ -40,7 +40,6 @@ const CameraC = (props) => {
       return () => {
         console.log('enedjdjdj-----leaver')
         setFoucs(false)
-
         // Do something when the screen is unfocused
       };
     }, [])
@@ -200,7 +199,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 60,
     width: width,
-    height: 10,
+    height: 0,
     zIndex: 300
   },  
   VideoWrap: {
@@ -209,13 +208,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#333',
     position: 'absolute',
     left: 0,
-    top: 0
+    top: 0,
+    zIndex: 300
   },
   close: {
     position: 'absolute',
     right: 50,
-    top: 100,
-    zIndex: 200,
+    top: 90,
+    zIndex: 20000,
   },
   text: {
     padding: 40,

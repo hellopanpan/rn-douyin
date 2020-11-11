@@ -41,7 +41,8 @@ const styles = StyleSheet.create({
   topbackIcon: {
     position: 'absolute',
     left: 20,
-    top: 10
+    top: 10,
+    zIndex: 200
   }, 
 });
 export default HeaderBack

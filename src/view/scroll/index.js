@@ -146,6 +146,8 @@ const Scroll = (props) => {
     React.useCallback(() => {
       console.log('enedjdjdj')
       // Do something when the screen is focused
+      setTimeout(() => setPlay(true), 600)
+      
       return () => {
         console.log('enedjdjdj-----leaver')
         setPlay(false)
@@ -191,7 +193,7 @@ const Scroll = (props) => {
               ref={videoPlayRef.current[index]}
               source={videoRef[index].uri} 
               style={styles.backgroundVideo}
-              resizeMode="cover" 
+              resizeMode="contain" 
               paused={!((index === current) && play)}
               repeat={true}      
             />
@@ -256,8 +258,10 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   backgroundVideo: {
-    width: width,
-    flex: 1
+    width: width + 60,
+    flex: 1,
+    backgroundColor: '#000',
+    marginLeft: -20
   }, 
   title: {
     fontSize: 32,

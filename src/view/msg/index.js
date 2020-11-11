@@ -16,10 +16,11 @@ const {width, height, scale} = Dimensions.get('window');
 import {MSG} from '../../api/config'
 const Person = (props) => {
   return (
-    <ScrollView style={styles.scrollView}>
-      <StatusBar barStyle="dark-content" backgroundColor="#ecf0f1" />
-      <SafeAreaView>
-        <View >
+    <View style={styles.scrollView}>
+      <StatusBar barStyle="light-content" backgroundColor="#ecf0f1" />
+      <SafeAreaView style={styles.scrollView}>
+        <Text style={styles.title}>消息</Text>
+        <ScrollView style={styles.wrap}>
           {
             MSG.map((item,index) => {
               return (
@@ -42,17 +43,30 @@ const Person = (props) => {
               ) 
             })
           }
-        </View>
+        </ScrollView>
       </SafeAreaView>
-    </ScrollView>
+    </View>
     
   )
 }
 const styles = StyleSheet.create({
   scrollView: {
     width: width,
+    backgroundColor: '#222',
+    flex: 1
+  },
+  wrap: {
+    width: width,
     backgroundColor: '#eee',
-    height: height
+    flex: 1
+  },
+  title: {
+    height: 36,
+    lineHeight: 20,
+    color: '#fff',
+    fontSize: 20,
+    fontWeight: '400',
+    textAlign: 'center'
   },
   flexRow: {
     display: 'flex',
