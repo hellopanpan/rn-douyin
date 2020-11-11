@@ -6,14 +6,10 @@ import {
   Text,
   TouchableOpacity
 } from 'react-native';
-import Scroll from '../scroll/index.js'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { connect } from 'react-redux';
 import { actionsCreators } from '../../store/tab'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-const {width, height, scale} = Dimensions.get('window');
-
-
 
 let tabData = [{
   name: '首页',
@@ -32,7 +28,6 @@ let tabData = [{
   id: 'my'
 }]
   
-
 const TabList = (props) => {
   console.log('-----tab' + props.navigation)
   const {tab, setTab, navigation, routeName} = props
@@ -50,6 +45,8 @@ const TabList = (props) => {
         itemId: index
     })
   }
+
+  // 监听route的state变化
   useEffect(() => {
     navigation.addListener('state', e => {
       // Prevent default action
@@ -61,6 +58,7 @@ const TabList = (props) => {
     });
   }, []);
 
+  // s上级传入的routerName变化设置index
   useEffect(() => {
     if (routeName === 'Home') setActiveIndex(0)
     if (routeName === 'Focus') setActiveIndex(1)
@@ -69,7 +67,7 @@ const TabList = (props) => {
     if (routeName === 'Person') setActiveIndex(4)
   }, [routeName])
 
-
+  // 设置选中状态
   const SetTabWrap = (index) => {
     setActiveIndex(index)
     setTab(index)
@@ -82,7 +80,7 @@ const TabList = (props) => {
             return(
               item.id !== 'add' ? (
                 <TouchableOpacity key={index} style={[index === activeIndex ? styles.activeT: null, styles.item]} onPress={() => {SetTabWrap(index)}}>
-                  <Text style={[styles.text01, styles.active]}> {item.name}</Text>
+                  <Text style={[styles.text01, index === activeIndex ? styles.active : null]}> {item.name}</Text>
                 </TouchableOpacity>
               ): (
                 <TouchableOpacity  key={index} style={[index === activeIndex ? styles.activeT: null, styles.center]} onPress={() => {SetTabWrap(index)}}>
@@ -90,7 +88,6 @@ const TabList = (props) => {
                 </TouchableOpacity>
               )
             )
-
           })
         }
     </View>
@@ -116,7 +113,7 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   text01: {
-    color: '#fff',
+    color: '#eee',
     textAlign: 'center',
     fontSize: 17,
     opacity: 0.8
@@ -129,7 +126,8 @@ const styles = StyleSheet.create({
   },
   active: {
     fontWeight: "600",
-    fontSize: 18
+    fontSize: 18,
+    color: '#fff'
   },
   activeT: {
     borderBottomColor: '#fff',
@@ -147,6 +145,5 @@ const mapDispatch = dispatch => ({
     let action = actionsCreators.setTab(index);
     dispatch(action)
   }
-  
 })
 export default connect(mapState, mapDispatch)(TabList);

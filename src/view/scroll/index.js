@@ -1,11 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React, { useState , useEffect, useRef} from 'react';
 import {
   Platform,
@@ -28,28 +20,24 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
+
 import { connect } from 'react-redux'
 import { actionsCreators } from '../../store/play'
 import Video from 'react-native-video';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import GoodInfo from './goodInfo';
 import {DATA} from '../../api/config'
-
 import { useFocusEffect } from '@react-navigation/native';
-
 const {width, height, scale} = Dimensions.get('window');
 
 const Scroll = (props) => {
-  
   const {good, list, navigation} = props
   const {changeData, setList, praiseVideo} = props
-  console.log(list)
   const [text, setText] = useState('')
   const [selectedId, setSelectedId] = useState(null);
   const [play, setPlay] = useState(true);
   const [current, setCurrent] = useState(0);
   const [refreshing, setRefreshing] = useState(false);
-
   const currentRef = useRef(0);
   const videoPlayRef = useRef([]);
   const flatRef = useRef();
@@ -80,10 +68,8 @@ const Scroll = (props) => {
         }else{
           return false
         }
-            //return  (Math.abs(dx) > 5) || (Math.abs(dy) > 5); 不使用这种写法，某些三星机器异常
       },
       // onMoveShouldSetPanResponderCapture: (evt, gestureState) => true,
-
       onPanResponderGrant: (evt, gestureState) => {
         // 滑动开始，记录时间戳
         startTimestampRef.current = evt.nativeEvent.timestamp
@@ -131,6 +117,7 @@ const Scroll = (props) => {
       }
     })
   ).current;
+
   // 跳转index
   const goIndex = (index, flag) => {
     console.log('index' + index)
@@ -153,6 +140,7 @@ const Scroll = (props) => {
   useEffect(() => {
     setList(DATA)
   }, [])
+
   // 监听屏幕离开
   useFocusEffect(
     React.useCallback(() => {
@@ -166,38 +154,33 @@ const Scroll = (props) => {
       };
     }, [])
   );
+
   // 滚动
   const handelonScroll = (e) => {
     // 滚动偏移量
     console.log('scoll' + e.nativeEvent.contentOffset.y)
   }
+
   // 改变播放状态
   const changePlay = () => {
     console.log('---play---')
     setPlay(!play)
   }
 
-  const videoError = () => {
-    console.log('video---error')
-  }
-  const onBuffer = () => {
-    console.log('video---onBuffer')
-  }
   const onRefresh = () => {
     console.log('onRefresh')
   }
-  const _onLongPressButton = () => {
-    Alert.alert('You long-pressed the button!')
-  }
+
   //自定义Footer视图
   const renderFooter = ()=> {
     return (
-        <View style={styles.loadingMore}>
-            <Text style={styles.loadingText}>没有更多数据啦...</Text>
-        </View>
+      <View style={styles.loadingMore}>
+        <Text style={styles.loadingText}>没有更多数据啦...</Text>
+      </View>
     )
-}
+  }
 
+  // render每条数据
   const renderItem = ({ item, index }) => {
     const backgroundColor = item.id === selectedId ? "#6e3b6e" : "#f9c2ff";
     videoPlayRef.current[index] = React.createRef()
@@ -224,6 +207,7 @@ const Scroll = (props) => {
       </TouchableWithoutFeedback>
     );
   };
+
   return (
     <View style={styles.contain}>
       {
@@ -245,10 +229,7 @@ const Scroll = (props) => {
           />
         ) : null
       }
-      
-      
     </View>
-    
   );
 };
 
@@ -301,12 +282,13 @@ const styles = StyleSheet.create({
   }
 });
 
-// 更新数据
+// 获取state
 const mapState = state => ({
   good: state.getIn(['play', 'good']),
   list: state.getIn(['play', 'list'])
 })
 
+// 更改state
 const mapDispatch = dispatch => ({
   changeData() {
     console.log('-----set')
@@ -322,7 +304,7 @@ const mapDispatch = dispatch => ({
   praiseVideo(value) {
     let action = actionsCreators.praiseVideo(value);
     dispatch(action)
-  },
-  
+  }
 })
+
 export default connect(mapState, mapDispatch)(Scroll);

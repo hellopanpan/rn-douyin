@@ -6,20 +6,15 @@ import {
   Text,
   StatusBar
 } from 'react-native';
-import Scroll from '../scroll/index.js'
-import TabList from './tab'
-import Person from '../person'
 
+import Scroll from '../scroll/index.js'
 const {width, height, scale} = Dimensions.get('window');
 
 const Home = ({navigation}) => {
-  
   return (
     <View style={styles.scrollView} >
       <StatusBar barStyle="light-content" />
       <Scroll navigation={navigation}></Scroll>
-      {/* <Person></Person>
-      <TabList></TabList> */}
     </View>
   );
 };

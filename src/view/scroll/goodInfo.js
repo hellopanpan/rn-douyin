@@ -9,19 +9,21 @@ import {
 } from 'react-native';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
-const {width, height, scale} = Dimensions.get('window');
 import { useNavigation } from '@react-navigation/native';
 import { connect } from 'react-redux';
 import { actionsCreators } from '../../store/play'
+const {width, height, scale} = Dimensions.get('window');
 
 const GoodInfo = (props) => {
   const navigation = useNavigation();
   const {itemInfo, praiseVideo, setModel, comentModel} = props
   const [activeIndex, setActiveIndex] = useState(0)
+  
   const  praiseVideoWrap = (id) => {
     praiseVideo(id)
     setActiveIndex(activeIndex + 1)
   }
+
   return (
     <View style={styles.cont}>
       <TouchableWithoutFeedback onStartShouldSetResponderCapture={()=>true}  onPress={() => praiseVideoWrap(itemInfo.id)}>
@@ -63,6 +65,9 @@ const styles = StyleSheet.create({
     color: '#fff',
     textAlign: 'center',
     marginTop: 3,
+    fontSize: 14,
+    fontWeight: '600',
+    marginTop: 8
   }
 });
 
@@ -76,6 +81,5 @@ const mapDispatch = dispatch => ({
     let action = actionsCreators.setModel(value);
     dispatch(action)
   }
-  
 })
 export default connect(mapState, mapDispatch)(GoodInfo); 

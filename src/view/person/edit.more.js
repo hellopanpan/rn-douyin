@@ -17,10 +17,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import HeaderBack from '../../components/header/index.js'
 import { useNavigation, useRoute} from '@react-navigation/native';
 import { useFocusEffect } from '@react-navigation/native';
-
 import { connect } from 'react-redux'
 import { actionsCreators } from '../../store/play'
-
 const {width, height, scale} = Dimensions.get('window');
 
 const Person = (props) => {
@@ -30,7 +28,6 @@ const Person = (props) => {
   const valueRef = useRef();
   const textRef = useRef();
   const [value, onChangeText] = React.useState('我的抖抖账号');
-
 
   // 监听屏幕离开
   useFocusEffect(
@@ -46,7 +43,6 @@ const Person = (props) => {
             value: valueRef.current
           })
         }
-        
         // Do something when the screen is unfocused
       };
     }, [])
@@ -95,7 +91,6 @@ const Person = (props) => {
         </SafeAreaView>
       </ScrollView>
     </View>
-    
   )
 }
 const styles = StyleSheet.create({

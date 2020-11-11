@@ -12,16 +12,18 @@ import {
 } from 'react-native';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
-const {width, height, scale} = Dimensions.get('window');
 import {PERSON} from '../../api/config'
 import { connect } from 'react-redux'
+const {width, height, scale} = Dimensions.get('window');
 
 const Person = (props) => {
   const {navigation, pic} = props
+
   const goEdit = () => {
     navigation.navigate('Full', { screen: 'PersonEdit' })
     console.log('edit------')
   }
+
   useEffect(() => {
     console.log('-----' + navigation)
     navigation.addListener('state', e => {
@@ -29,6 +31,7 @@ const Person = (props) => {
      console.log('----222222---person' + e.data.state.routes[e.data.state.routes.length -1].name)
     });
   },[])
+
   return (
     <ScrollView style={styles.scrollView}>
       <StatusBar barStyle="light-content" />

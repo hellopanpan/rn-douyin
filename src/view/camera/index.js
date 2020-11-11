@@ -14,9 +14,10 @@ import {
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { RNCamera, FaceDetector } from 'react-native-camera';
-const {width, height, scale} = Dimensions.get('window');
 import { useFocusEffect } from '@react-navigation/native';
 import Video from 'react-native-video';
+const {width, height, scale} = Dimensions.get('window');
+
 const CameraC = (props) => {
   const [foucs, setFoucs] = useState(false)
   const cameraRef = useRef()
@@ -142,6 +143,9 @@ const CameraC = (props) => {
       <TouchableOpacity onPress={() => takeRecord()} style={[styles.takepicWrap, styles.flexRow]}>
         <Animated.View style={[styles.takepicIn, {opacity: opacityRef.current}]}></Animated.View>
       </TouchableOpacity>
+      <Text style={styles.takepicWrapText}>{
+        !isrecording? '点击开始录像': '录像中'
+      }</Text>
       { picSourceRef.current ? (
         // 查看录像
         <TouchableOpacity onPress={() => setShowVideo(true)} style={[styles.takepicWrap2, styles.flexRow]}>
@@ -227,6 +231,15 @@ const styles = StyleSheet.create({
     width: 80,
     borderRadius: 40,
     backgroundColor: '#fff'
+  },
+  takepicWrapText: {
+    position: 'absolute',
+    bottom: 100,
+    left: width/2 - 90,
+    height:30,
+    width: 180,
+    color: '#fff',
+    textAlign: 'center',
   },
   takepicWrapRe: {
     position: 'absolute',

@@ -13,32 +13,31 @@ import {
 } from 'react-native';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
-const {width, height, scale} = Dimensions.get('window');
-import {EditList} from '../../api/config'
 import HeaderBack from '../../components/header/index.js'
 import Select from '../../components/selectPic/index.js'
-
 import { connect } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'; 
+const {width, height, scale} = Dimensions.get('window');
 
 const Person = (props) => {
   const {user, pic} = props
   const [showDiao, setShowDiao] = useState(false)
   const navigation = useNavigation()
+
   useEffect(() => {
     console.log(user)
   },[])
-  const showImg = () => {
-    console.log('show img')
-  }
+
   const cancel = () => {
     setShowDiao(false)
     console.log('show cancel')
   }
+
   // 选取图片回调
   const callBack = (res) => {
     console.log(res)
   }
+  
   return (
     <View style={styles.scrollView}>
       <StatusBar barStyle="light-content" />
@@ -76,7 +75,7 @@ const Person = (props) => {
         }
         </View>
       </SafeAreaView>
-        <Select showImg={showImg} cancel={cancel} showDiao={showDiao} ></Select>
+      <Select cancel={cancel} showDiao={showDiao} ></Select>
     </View>
   )
 }
