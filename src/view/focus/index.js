@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     width: 5,
     height: 5,
     borderRadius: 2.5,
-    backgroundColor: '#333',
+    backgroundColor: '#0e0',
     marginRight: 5
   },
   livetext: {
