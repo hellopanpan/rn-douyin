@@ -30,7 +30,7 @@ const Select = (props) =>  {
       endAnimated()
       setTimeout(() => {
         cancel()
-      }, 500)
+      }, 200)
     }
     
   }
@@ -47,7 +47,7 @@ const Select = (props) =>  {
   endAnimated = () => {
     Animated.timing(opacityRef.current, {
       toValue: 700,
-      duration: 400,
+      duration: 200,
       delay: 0,
       useNativeDriver: true
     }).start()

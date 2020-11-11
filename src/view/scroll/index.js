@@ -26,7 +26,7 @@ import { actionsCreators } from '../../store/play'
 import Video from 'react-native-video';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import GoodInfo from './goodInfo';
-import {DATA, videoRef0, videoRef2} from '../../api/config'
+import {DATA, DATA2, videoRef0, videoRef2} from '../../api/config'
 import { useFocusEffect } from '@react-navigation/native';
 const {width, height, scale} = Dimensions.get('window');
 
@@ -94,10 +94,11 @@ const Scroll = (props) => {
           setRefreshing(true)
           setTimeout(() => {
             setVideoRef(videoRef0)
+            setList(DATA2)
             setRefreshing(false)
-          }, 1000);
+          }, 800);
           // goIndex(currentRef.current, false)                                                                                                                                                                                                                                                                  
-        } else if ((y < -100 || speed < -0.5)&& currentRef.current < DATA.length -1) {
+        } else if ((y < -100 || speed < -0.5)&& currentRef.current < 4) {
           // 下一页
           goIndex(currentRef.current + 1, true)
         } else {
