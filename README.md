@@ -37,4 +37,4 @@ $ yarn ios
 ### 5.演示
 
 点击下面链接查看
-[![Watch the video](http://xpanpan.com/cross/public/1.jpg)](http://v3-ppx.ixigua.com/6e8b986a4d9b5bdefac55660bbc7742b/5fa9223b/video/m/220191068546f3a4d998c36bd7d6f4e8eed11662011100006fe7130135d5/?a=1319&br=3417&bt=1139&cr=0&cs=0&cv=1&dr=3&ds=3&er=&l=202011091803490100140431500001EFF7&lr=superb&mime_type=video_mp4&qs=0&rc=ajU3ZThyNnlqeDMzZmYzM0ApZWQ2OTs7OTtnN2k8aDdpOWdjM2ljNS5lc2hfLS0xMTBzczQuNS02LV4zNS0uYTNhYWA6Yw%3D%3D&vl=&vr=)
+[link](https://h5.pipix.com/s/JuHVwbo/)
