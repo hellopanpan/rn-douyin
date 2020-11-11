@@ -26,7 +26,7 @@ import { actionsCreators } from '../../store/play'
 import Video from 'react-native-video';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import GoodInfo from './goodInfo';
-import {DATA} from '../../api/config'
+import {DATA, videoRef0, videoRef2} from '../../api/config'
 import { useFocusEffect } from '@react-navigation/native';
 const {width, height, scale} = Dimensions.get('window');
 
@@ -42,18 +42,7 @@ const Scroll = (props) => {
   const videoPlayRef = useRef([]);
   const flatRef = useRef();
   const startTimestampRef = useRef();
-
-  const videoRef =[{
-    uri: require('../../static/0.mp4')
-  }, {
-    uri: require('../../static/1.mp4')
-  },{
-    uri: require('../../static/2.mp4')
-  },{
-    uri: require('../../static/3.mp4')
-  },{
-    uri: require('../../static/4.mp4')
-  }]
+  const [videoRef, setVideoRef] = useState(videoRef2)
   
   const panResponder = useRef(
     PanResponder.create({
@@ -104,6 +93,7 @@ const Scroll = (props) => {
           // 上一夜
           setRefreshing(true)
           setTimeout(() => {
+            setVideoRef(videoRef0)
             setRefreshing(false)
           }, 1000);
           // goIndex(currentRef.current, false)                                                                                                                                                                                                                                                                  
@@ -170,6 +160,7 @@ const Scroll = (props) => {
 
   const onRefresh = () => {
     console.log('onRefresh')
+    
   }
 
   //自定义Footer视图

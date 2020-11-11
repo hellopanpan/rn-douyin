@@ -298,3 +298,33 @@ export const EditList = [{
   key: '生日' ,
   value: '1992.02.11'
 }]
+export const videoRef0 = [{
+    uri: require('../static/3.mp4')
+  }, 
+  {
+    uri: require('../static/4.mp4')
+  },
+  {
+    uri: require('../static/0.mp4')
+  },
+  {
+    uri: require('../static/1.mp4')
+  },
+  {
+    uri: require('../static/8.mp4')
+}]
+export const videoRef2 =[{
+    uri: require('../static/5.mp4')
+  }, 
+  {
+    uri: require('../static/6.mp4')
+  },
+  {
+    uri: require('../static/7.mp4')
+  },
+  {
+    uri: require('../static/2.mp4')
+  },
+  {
+    uri: require('../static/9.mp4')
+}]
