@@ -15,6 +15,7 @@ import {
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { RNCamera, FaceDetector } from 'react-native-camera';
 import { useFocusEffect } from '@react-navigation/native';
+import HeaderBack from '../../components/header/index.js'
 import Video from 'react-native-video';
 const {width, height, scale} = Dimensions.get('window');
 
@@ -39,10 +40,12 @@ const CameraC = (props) => {
       return () => {
         console.log('enedjdjdj-----leaver')
         setFoucs(false)
+
         // Do something when the screen is unfocused
       };
     }, [])
   );
+
   // 动画
   startAnimated = () => {
     const animationSlider =  Animated.sequence([
@@ -62,6 +65,7 @@ const CameraC = (props) => {
     animateRef.current = Animated.loop(animationSlider)
     animateRef.current.start();
   }
+
   // 停止
   stopAnimated = () => {
     animateRef.current.stop();
@@ -110,7 +114,6 @@ const CameraC = (props) => {
       const data2 = await cameraRef.current.takePictureAsync(optionspic);
       console.log(data2.uri);
       picSourceRef.current = data2.uri
-    
       setIsrecording(false);
     }
     
@@ -118,7 +121,11 @@ const CameraC = (props) => {
   
   return (
     <View style={styles.scrollView}>
-      <StatusBar barStyle="dark-content" backgroundColor="#ecf0f1" />
+      <StatusBar barStyle="light-content" />
+      <View style={styles.banner}>
+        <HeaderBack title={'  '}></HeaderBack>
+      </View>
+      
       {foucs? (
         <RNCamera
           style={styles.camera}
@@ -189,6 +196,13 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     position: 'relative'
   },
+  banner: {
+    position: 'absolute',
+    top: 60,
+    width: width,
+    height: 10,
+    zIndex: 300
+  },  
   VideoWrap: {
     height: height,
     width: width,
@@ -225,7 +239,7 @@ const styles = StyleSheet.create({
   },
   takepicWrap: {
     position: 'absolute',
-    bottom: 20,
+    bottom: 60,
     left: width/2 - 40,
     height:80,
     width: 80,
@@ -234,7 +248,7 @@ const styles = StyleSheet.create({
   },
   takepicWrapText: {
     position: 'absolute',
-    bottom: 100,
+    bottom: 140,
     left: width/2 - 90,
     height:30,
     width: 180,
@@ -243,7 +257,7 @@ const styles = StyleSheet.create({
   },
   takepicWrapRe: {
     position: 'absolute',
-    bottom: 20,
+    bottom: 60,
     left: 40,
     height:80,
     width: 80,
@@ -251,7 +265,7 @@ const styles = StyleSheet.create({
   },
   takepicWrap2: {
     position: 'absolute',
-    bottom: 38,
+    bottom: 78,
     left: width - 100,
     height:50,
     width: 50,

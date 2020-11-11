@@ -146,7 +146,6 @@ const Scroll = (props) => {
     React.useCallback(() => {
       console.log('enedjdjdj')
       // Do something when the screen is focused
-      setPlay(true)
       return () => {
         console.log('enedjdjdj-----leaver')
         setPlay(false)

@@ -35,6 +35,12 @@ const FullStackComponent = () => {
       <FullStack.Screen name="PersonEditMore" 
         component={PersonEditMore}
       />
+      <Stack.Screen name="Camera" 
+        component={Camera} 
+        options={{
+          header:  () => null,
+        }}
+      />
     </FullStack.Navigator>
   )
 }
@@ -56,12 +62,7 @@ const MainStack = ({navigation, route}) => {
             header:  () => null,
           }}
         />
-        <Stack.Screen name="Camera" 
-          component={Camera} 
-          options={{
-            header:  () => null,
-          }}
-        />
+        
         <Stack.Screen name="Msg" 
           component={Msg} 
           options={{

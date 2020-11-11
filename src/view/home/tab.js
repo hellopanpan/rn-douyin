@@ -73,6 +73,10 @@ const TabList = (props) => {
     setTab(index)
     goNavigation(index)
   }
+  // 设置选中状态
+  const goCamera = (index) => {
+    navigation.navigate('Full', {screen: 'Camera'})
+  }
   return (
     <View style={[styles.cont, {paddingBottom: insets.bottom}]}>
         {
@@ -83,7 +87,7 @@ const TabList = (props) => {
                   <Text style={[styles.text01, index === activeIndex ? styles.active : null]}> {item.name}</Text>
                 </TouchableOpacity>
               ): (
-                <TouchableOpacity  key={index} style={[index === activeIndex ? styles.activeT: null, styles.center]} onPress={() => {SetTabWrap(index)}}>
+                <TouchableOpacity  key={index} style={[index === activeIndex ? styles.activeT: null, styles.center]} onPress={() => {goCamera(index)}}>
                   <Ionicons name={'ios-add-outline'} size={22} style={{color: '#fff', transform: [{scale: 1.5}]}}></Ionicons>
                 </TouchableOpacity>
               )
