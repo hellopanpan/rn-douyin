@@ -187,6 +187,7 @@ const styles = StyleSheet.create({
   },
   bigPicIn: {
     width: width,
+    height: height
   },
   Wrap2: {
     position: 'absolute',
